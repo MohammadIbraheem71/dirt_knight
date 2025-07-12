@@ -11,7 +11,7 @@ const JUMP_VELOCITY = -300.0
 
 var climbing := false
 
-var has_double_jump = true
+var has_double_jump = false
 const MAX_JUMPS = 2
 var jump_num = 0
 var can_double_jump = false
