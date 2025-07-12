@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="double_jump_power_up" load_steps=3 format=3 uid="uid://dkk0bpwwq80d1"]
+
+[ext_resource type="Script" uid="uid://djiusolrgksko" path="res://scripts/power_up_scripts/double_jump_script.gd" id="1_1ncng"]
+[ext_resource type="SpriteFrames" uid="uid://cnkf0jowqrts" path="res://resources/power_up_sprites/sprites_Doublejump.tres" id="2_wqsgw"]
+
+[resource]
+script = ExtResource("1_1ncng")
+name = "double jump"
+sprite_frames = ExtResource("2_wqsgw")
+description = "enables double jumps in the player"
+metadata/_custom_type_script = "uid://djiusolrgksko"

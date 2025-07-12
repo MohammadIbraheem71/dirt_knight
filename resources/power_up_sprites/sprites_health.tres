@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cehwg2rweeg12"]
+
+[ext_resource type="Texture2D" uid="uid://bim7rusjgga2t" path="res://assets/sprites/power_ups/crystal_pink.png" id="1_3xfak"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgj8j"]
+atlas = ExtResource("1_3xfak")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g2tn"]
+atlas = ExtResource("1_3xfak")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw8ij"]
+atlas = ExtResource("1_3xfak")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk2cw"]
+atlas = ExtResource("1_3xfak")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5i1e"]
+atlas = ExtResource("1_3xfak")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk1jj"]
+atlas = ExtResource("1_3xfak")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqdij"]
+atlas = ExtResource("1_3xfak")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdemd"]
+atlas = ExtResource("1_3xfak")
+region = Rect2(112, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgj8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g2tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw8ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk2cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5i1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk1jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqdij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdemd")
+}],
+"loop": true,
+"name": &"rotate",
+"speed": 5.0
+}]
