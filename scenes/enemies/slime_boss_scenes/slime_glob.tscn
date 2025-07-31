@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5xe0me6btjaw"]
+
+[ext_resource type="Script" uid="uid://2tmhi8ypp3q1" path="res://scripts/enemies/slime_boss_scripts/slime_glob.gd" id="1_0jega"]
+[ext_resource type="Texture2D" uid="uid://ci0ng7dtl1fa5" path="res://assets/sprites/slime_boss/slime_glob.png" id="1_6vy3w"]
+[ext_resource type="PackedScene" uid="uid://bjwvs2daax0co" path="res://scenes/killzone.tscn" id="2_u5hgc"]
+[ext_resource type="PackedScene" uid="uid://bnmkxi3sw0jgt" path="res://scenes/common_components/trajectory_component.tscn" id="3_mdlnf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wukg8"]
+radius = 12.0
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0jega"]
+radius = 13.0
+
+[node name="slime_glob" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_0jega")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6vy3w")
+
+[node name="killzone" parent="." instance=ExtResource("2_u5hgc")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("CapsuleShape2D_wukg8")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0jega")
+
+[node name="trajectory_component" parent="." instance=ExtResource("3_mdlnf")]
+character_path = NodePath("..")

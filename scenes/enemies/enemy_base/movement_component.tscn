@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtf4iafp11h5u"]
+
+[ext_resource type="Script" uid="uid://b5ty5415ytct0" path="res://scripts/enemies/enemy_base/movement_component.gd" id="1_s4b6h"]
+
+[node name="movement_component" type="Node"]
+script = ExtResource("1_s4b6h")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnmkxi3sw0jgt"]
+
+[ext_resource type="Script" uid="uid://ducfgd3o6xjne" path="res://scripts/common_components/trajectory_component.gd" id="1_64vhe"]
+
+[node name="trajectory_component" type="Node"]
+script = ExtResource("1_64vhe")

@@ -1,8 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://dea88y0n4ieij"]
+[gd_scene load_steps=20 format=3 uid="uid://dea88y0n4ieij"]
 
-[ext_resource type="Script" uid="uid://dec1eh738yuma" path="res://scripts/enemy.gd" id="1_4ra3w"]
+[ext_resource type="Script" uid="uid://dec1eh738yuma" path="res://scripts/enemies/slime_mini/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://q5xmugdci7v4" path="res://assets/sprites/slime_purple.png" id="1_7p1mj"]
 [ext_resource type="PackedScene" uid="uid://bjwvs2daax0co" path="res://scenes/killzone.tscn" id="2_md0e3"]
+[ext_resource type="PackedScene" uid="uid://cwyxsigsxihmt" path="res://scenes/enemies/enemy_base/hurtbox_component.tscn" id="4_5uy6h"]
+[ext_resource type="PackedScene" uid="uid://dbiv1h3l7tnn5" path="res://scenes/enemies/enemy_base/health_component.tscn" id="5_xwavj"]
+[ext_resource type="PackedScene" uid="uid://dtf4iafp11h5u" path="res://scenes/enemies/enemy_base/movement_component.tscn" id="6_nenq2"]
+[ext_resource type="PackedScene" uid="uid://vy1t4smggqyk" path="res://scenes/enemies/enemy_base/animation_component.tscn" id="7_nenq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
+size = Vector2(14, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -76,38 +83,48 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
 size = Vector2(10, 13.5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
-height = 22.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md484"]
+size = Vector2(14, 13)
 
-[node name="enemy" type="Node2D"]
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 64
 script = ExtResource("1_4ra3w")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_5uy6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xwavj")
+animation = &"hit"
 autoplay = "default"
-frame_progress = 0.151846
+frame = 3
+frame_progress = 1.0
 
 [node name="killzone" parent="." instance=ExtResource("2_md0e3")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 position = Vector2(0, -7.75)
 shape = SubResource("RectangleShape2D_4ra3w")
 
-[node name="RayCast_right" type="RayCast2D" parent="."]
-position = Vector2(0, -8)
-target_position = Vector2(9, 0)
-
-[node name="RayCast_left" type="RayCast2D" parent="."]
-position = Vector2(0, -8)
-target_position = Vector2(-9, 0)
-
-[node name="hurtbox" type="Area2D" parent="."]
+[node name="hurtbox_component" parent="." instance=ExtResource("4_5uy6h")]
 collision_layer = 8
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2(0, -8)
-shape = SubResource("CapsuleShape2D_4ra3w")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox_component"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_md484")
 
-[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[node name="health_component" parent="." instance=ExtResource("5_xwavj")]
+
+[node name="movement_component" parent="." instance=ExtResource("6_nenq2")]
+character_path = NodePath("..")
+
+[node name="animation_component" parent="." instance=ExtResource("7_nenq2")]
+animated_sprite_path = NodePath("../AnimatedSprite2D")
+
+[connection signal="hit" from="hurtbox_component" to="." method="_on_enemy_hurtbox_hit"]
+[connection signal="died" from="health_component" to="." method="_on_health_component_died"]
